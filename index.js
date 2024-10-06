@@ -6,9 +6,7 @@ import authMiddleware from "./middlewares/authMiddleware.js";
 import authRoute from "./routes/authRoute.js";
 import userRoute from "./routes/userRoute.js";
 
-dotenv.config({
-  path: process.env.NODE_ENV === "production" ? "./.env" : "./local.env",
-});
+dotenv.config({ path: "./.env" });
 
 const app = express();
 
@@ -29,10 +27,9 @@ app.use(
 );
 
 app.listen(process.env.PORT || 8081, () => {
-    console.log("ENV", process.env.NODE_ENV)
+  console.log("ENV", process.env.NODE_ENV);
   console.log("Server is running!");
 });
 
-app.use("/api/v1/auth", authMiddleware.authentication, authRoute)
-app.use("/api/v1/user", authMiddleware.authentication, userRoute)
-
+app.use("/api/v1/auth", authMiddleware.authentication, authRoute);
+app.use("/api/v1/user", authMiddleware.authentication, userRoute);
