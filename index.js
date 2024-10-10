@@ -12,7 +12,7 @@ const app = express();
 
 mongoose
   .connect(
-    "mongodb+srv://quynhhuong179kj:0UnJakzTCJkUsEnz@cluster0.yg66z.mongodb.net/"
+    "mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_CLUSTER}/"
   )
   .then(() => {
     console.log("Kết nối tới database thành công");
